@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.ufmg.coltec.kadosh">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
    <application
         android:label="kadosh"
         android:icon="@mipmap/ic_launcher">
@@ -37,5 +41,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data
+           android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyA3pw9NNmioXlTkfk4p64yspuk4NOx8y1A"/>
     </application>
 </manifest>

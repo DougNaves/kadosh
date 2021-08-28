@@ -1,7 +1,9 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:kadosh/models/user_model.dart';
 import 'package:scoped_model/scoped_model.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -14,7 +16,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
   final _addressController = TextEditingController();
-  final _phoneController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldMessengerState>();
@@ -76,17 +77,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     validator: (text){
                       if(text!.isEmpty) return "Endereço inválido!";
-                    },
-                  ),
-                  SizedBox(height: 16.0,),
-                  TextFormField(
-                    controller: _phoneController,
-                    decoration: InputDecoration(
-                        hintText: "Telefone com código de área"
-                    ),
-                    keyboardType: TextInputType.phone,
-                    validator: (text){
-                      if(text!.isEmpty || text.length < 11) return "Número inválido";
                     },
                   ),
                   SizedBox(height: 16.0,),

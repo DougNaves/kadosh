@@ -2,28 +2,36 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ScheduleData {
-  String eventName = "";
+  String clientId = "";
+  String clientName = "";
+  String service = "";
   DateTime from = DateTime.now();
   DateTime to = DateTime.now();
-  //Color background = Colors.red;
-  // bool isAllDay = false;
+  Color background = Colors.red;
 
 
-  ScheduleData.fromDocument(DocumentSnapshot snapshot){
-    eventName = snapshot.data["service"];
+  ScheduleData.fromDocument(var snapshot){
+    clientId = snapshot.data["clientId"];
+    clientName = snapshot.data["clientName"];
+    service = snapshot.data["service"];
     from = snapshot.data["start"].toDate();
     to =  snapshot.data["end"].toDate();
+    background = Colors.red;
   }
 
-  ScheduleData.createDocument(String name, DateTime date, int duration){
-    Map<String, dynamic> data ={
-      "service": name,
-      "start": date,
-      "end": date.add(Duration(minutes: duration)),
-      //"color": this.color,
-      // "allDay": this.isAllDay,
-    };
-    Firestore.instance.collection('schedule').add(data);
-  }
+  ScheduleData.createDocument(String clientId, String clientName, String service, DateTime date, int duration){
+    Firestore.instance.collection('schedule').add(
+        {
+          "clientId": clientId,
+          "clientName": clientName,
+          "service": service,
+          "start": date,
+          "end": date.add(Duration(minutes: duration))
+        }
+    );
+   }
+   ScheduleData.removeDocument(var snapshot){
+     snapshot.reference.delete();
+   }
 
 }

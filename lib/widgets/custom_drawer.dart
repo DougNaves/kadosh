@@ -42,7 +42,11 @@ class CustomDrawer extends StatelessWidget {
                     Positioned(
                         top: 8.0,
                         left: 0.0,
-                        child: Image.asset('assets/images/logo/logo_home.png')
+                        child: Text("Espaço\n    Kadosh",
+                          style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.bold, color: Theme
+                              .of(context)
+                              .primaryColor),
+                        ),
                     ),
                     Positioned(
                         left: 0.0,

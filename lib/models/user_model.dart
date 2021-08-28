@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class UserModel extends Model {
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance; //Auth
 
   var firebaseUser;
   Map<String, dynamic> userData = Map();

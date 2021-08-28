@@ -8,7 +8,7 @@ class ServiceData{
   int duration = 0;
   List images = [];
 
-  ServiceData.fromDocument(DocumentSnapshot snapshot){
+  ServiceData.fromDocument(var snapshot){
     title = snapshot.data["title"];
     description = snapshot.data["description"];
     price = snapshot.data["price"] + 0.0;

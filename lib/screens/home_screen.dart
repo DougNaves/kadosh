@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kadosh/screens/map_screen.dart';
+import 'package:kadosh/tabs/history_tab.dart';
 import 'package:kadosh/tabs/home_tab.dart';
-import 'package:kadosh/tabs/my_schedules_tab.dart';
+import 'package:kadosh/tabs/schedule_tab.dart';
 import 'package:kadosh/tabs/services_tab.dart';
 import 'package:kadosh/widgets/custom_drawer.dart';
 
@@ -36,7 +38,23 @@ class HomeScreen extends StatelessWidget {
             centerTitle: true,
           ),
           drawer: CustomDrawer(_pageController),
-          body: MySchedulesTab(),
+          body: ScheduleTab(),
+        ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text("Histórico"),
+            centerTitle: true,
+          ),
+          drawer: CustomDrawer(_pageController),
+          body: HistoryTab(),
+        ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text("Localização"),
+            centerTitle: true,
+          ),
+          drawer: CustomDrawer(_pageController),
+          body: MapScreen(),
         )
       ],
     );

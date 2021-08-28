@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
             primaryColor: Color.fromARGB(255, 170, 80, 90),
+            textButtonTheme: TextButtonThemeData(
+              style:TextButton.styleFrom(primary: Color.fromARGB(255, 170, 80, 90)),
+            )
           ),
           home: HomeScreen(),
         ))  ;

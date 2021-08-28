@@ -1,12 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:kadosh/tabs/home_tab.dart';
-import 'package:kadosh/tabs/my_schedules_tab.dart';
-import 'package:kadosh/tabs/services_tab.dart';
 
 class DrawerTile extends StatelessWidget {
-  //Vamos criar um construtor para criar os itens do menu drawer
+
   final IconData icon;
   final String text;
   final PageController pageController;
@@ -16,7 +11,6 @@ class DrawerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Retornando Material para colocar efeito visual
 
     return Material(
       color: Colors.transparent,

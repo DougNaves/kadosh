@@ -19,16 +19,12 @@ class ScheduleDataSource extends CalendarDataSource {
 
   @override
   String getSubject(int index) {
-    return appointments![index].eventName;
+    return "Indisponível";
   }
 
-  // @override
-  // Color getColor(int index) {
-  //   return appointments![index].background;
-  // }
-  //
-  // @override
-  // bool isAllDay(int index) {
-  //   return appointments![index].isAllDay;
-  // }
+  @override
+  Color getColor(int index) {
+    return appointments![index].background;
+  }
+
 }

@@ -1,11 +1,13 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:kadosh/datas/service_data.dart';
-
+import 'package:kadosh/models/user_model.dart';
 import 'calendar_screen.dart';
+import 'login_screen.dart';
 
 class ServiceScreen extends StatefulWidget {
   final ServiceData service;
+
   ServiceScreen(this.service);
 
   @override
@@ -13,8 +15,8 @@ class ServiceScreen extends StatefulWidget {
 }
 
 class _ServiceScreenState extends State<ServiceScreen> {
-
   final ServiceData service;
+
   _ServiceScreenState(this.service);
 
   @override
@@ -29,7 +31,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
       body: ListView(
         children: [
           AspectRatio(
-            aspectRatio: 0.9,
+            aspectRatio: 1.2,
             child: Carousel(
               images: service.images.map((url) {
                 return NetworkImage(url);
@@ -69,24 +71,29 @@ class _ServiceScreenState extends State<ServiceScreen> {
                 SizedBox(
                   height: 44.0,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context)=>CalendarScreen(service)));
-                    },
-                    child: Text("Agendar",
-                        style: TextStyle(fontSize: 16.0, color: Colors.white)),
                     style: ElevatedButton.styleFrom(primary: primaryColor),
+                    onPressed: () {
+                      if (UserModel.of(context).isLoggedIn()) {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => CalendarScreen(service)));
+                      } else {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => LoginScreen()));
+                      }
+                    },
+                    child: Text(
+                      UserModel.of(context).isLoggedIn()
+                          ? "Agendar"
+                          : "Entre para Agendar",
+                      style: TextStyle(fontSize: 18.0),
+                    ),
                   ),
                 ),
                 SizedBox(height: 16.0),
-                Text(
-                    "Descrição",
-                    style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)
-                ),
-                Text(
-                    service.description,
-                    style: TextStyle(fontSize: 16.0)
-                )
+                Text("Descrição",
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500)),
+                Text(service.description, style: TextStyle(fontSize: 16.0))
               ],
             ),
           )

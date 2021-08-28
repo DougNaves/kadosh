@@ -24,7 +24,9 @@ class ServicesTab extends StatelessWidget {
           builder: (context, snapshot) {
             if (!snapshot.hasData)
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor
+                ),
               );
             else {
               var dividedTiles = ListTile.divideTiles(

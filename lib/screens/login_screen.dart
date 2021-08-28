@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: ScopedModelDescendant<UserModel>(
           builder: (context, child, model){
             if(model.isLoading)
-              return Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator(),);
 
             return Form(
               key: _formKey,

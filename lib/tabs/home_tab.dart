@@ -25,32 +25,30 @@ class HomeTab extends StatelessWidget {
       children: [
         _buildBodyBack(),
         FutureBuilder<QuerySnapshot>(
-          future: Firestore.instance
-              .collection("home")
-              .orderBy("pos")
-              .getDocuments(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData)
-              return Container(
-                height: 200.0,
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                ),
-              );
-            else
-              return Carousel(
-                images: snapshot.data!.documents.map((doc) {
-                  return NetworkImage(doc.data["image"]);
-                }).toList(),
-                dotSize: 4.0,
-                dotSpacing: 15.0,
-                dotBgColor: Colors.transparent,
-                dotColor: primaryColor,
-                autoplay: false,
-              );
-          },
-        ),
+            future: Firestore.instance
+                .collection("home")
+                .orderBy("pos")
+                .getDocuments(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Container(
+                    child: Center(
+                        child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor,
+                )));
+              } else {
+                return Carousel(
+                  images: snapshot.data!.documents.map((doc) {
+                    return NetworkImage(doc.data["image"]);
+                  }).toList(),
+                  dotSize: 4.0,
+                  dotSpacing: 15.0,
+                  dotBgColor: Colors.transparent,
+                  dotColor: primaryColor,
+                  autoplay: false,
+                );
+              }
+            }),
       ],
     );
   }
